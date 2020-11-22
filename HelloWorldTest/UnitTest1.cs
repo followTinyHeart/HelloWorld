@@ -11,6 +11,7 @@ namespace HelloWorldTest
     {
         private readonly ILogger<HomeController> _logger;
 
+
         [TestMethod]
         [TestCategory("≥£”√")]
         public void TestMethod1()
@@ -21,5 +22,7 @@ namespace HelloWorldTest
 
             Console.WriteLine(result.Value);
         }
+
+        public void AddTest() { }
     }
 }

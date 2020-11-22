@@ -3,3 +3,11 @@
 ################################################################################
 
 /HelloWorld/obj
+/HelloWorld/.vs/HelloWorld
+/HelloWorld/bin/Debug/netcoreapp3.1
+/.vs/HelloWorld/DesignTimeBuild
+/.vs/HelloWorld/v15/Server/sqlite3
+/.vs/HelloWorld/v16
+/HelloWorldTest/bin/Debug/netcoreapp3.1
+/HelloWorldTest/obj
+/HelloWorld
