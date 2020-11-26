@@ -13,7 +13,7 @@ namespace HelloWorldTest
 
 
         [TestMethod]
-        [TestCategory("³£ÓÃ")]
+        [TestCategory("å¸¸ç”¨")]
         public void TestMethod1()
         {
             HomeController controller = new HomeController(_logger);
@@ -24,5 +24,8 @@ namespace HelloWorldTest
         }
 
         public void AddTest() { }
+
+
+        public void FromMac() { }
     }
 }
