@@ -45,5 +45,14 @@ namespace HelloWorld.Controllers
 
             return Json(guid);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult GetPartView(string num) 
+        {
+            return this.PartialView("Test", num);
+        }
     }
 }

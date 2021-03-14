@@ -2,7 +2,38 @@
     ViewData["Title"] = "Home Page";
 }
 
+<script src="~/js/jquery-1.10.2.js"></script>
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+
+<div id="" onclick="AddPartView(1)">视图页区域</div>
+<div style="background-color:forestgreen" id="Area1"></div>
+
+<br />
+
+<div id="" onclick="AddPartView(2)">视图页区域</div>
+<div style="background-color:red" id="Area2"></div>
+
+<br />
+
+<div id="" onclick="AddPartView(3)">视图页区域</div>
+<div style="background-color:yellow" id="Area3"></div>
+
+
+<script>
+    function AddPartView(num) {
+        $.ajax({
+            type: "POST",
+            url: "/Home/GetPartView",
+            data: { num: num },
+            async: false,
+            success: function (data) {
+                $("#Area" + num).html(data);
+            }
+        });
+    }
+</script>
