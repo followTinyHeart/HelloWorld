@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 namespace HelloWorldTest
 {
     [TestClass]
-    public class UnitTest1
+    public class HomeControllerTest
     {
         private readonly ILogger<HomeController> _logger;
 
