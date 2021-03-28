@@ -27,5 +27,7 @@ namespace HelloWorldTest
 
 
         public void FromMac() { }
+
+        public void CommitTest() {  }
     }
 }
