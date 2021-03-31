@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>首页</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="Js/jquery-1.10.2.js"></script>
+    <script src="Js/Array.js"></script>
+    <style>
+
+        body {
+            margin: 0;
+            background-color: aliceblue;
+            font-family: 'PingFang SC';
+        }
+
+        .leftArea {
+            background-color: white;
+            margin-top: 20px;
+        }
+
+        .rightArea {
+        }
+
+        .div_Title {
+            font-size: 16px;
+            width: 100%;
+            background-color: #ddf3f5;
+            margin-top: 20px;
+            padding: 5px;
+        }
+
+        .div_button {
+            margin-left: 5px;
+            margin-top: 10px;
+            background-color: #1AB6FF;
+        }
+
+        .div_TextArea {
+            width: 100%;
+            min-height: 200px;
+            background-color: #f5f5f5;
+            border: 1px solid;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row clearfix">
+
+            <div class="col-md-6 column leftArea">
+
+                <div style="margin:10px;">
+                    <div class="div_Title">数组</div>
+                    <div>
+                        <div class="btn btn-info div_button" id="TwoSum">两数之和</div>
+                        <div class="btn btn-info div_button" id="">寻找两个正序数组的中位数</div>
+                        <div class="btn btn-info div_button">盛最多水的容器</div>
+                        <div class="btn btn-info div_button" id="ThreeSum">三数之和</div>
+                        <div class="btn btn-info div_button">最近接的三数之和</div>
+                        <div class="btn btn-info div_button">四数之和</div>
+                        <div class="btn btn-info div_button">删除排序数组中的重复项</div>
+                        <div class="btn btn-info div_button">移除元素</div>
+                    </div>
+                </div>
+
+                <div style="margin:10px;">
+                    <div class="div_Title">动态规则</div>
+                    <div type="div" class="btn btn-success div_button">最长回文子串</div>
+                    <div type="div" class="btn btn-success div_button">正则表达式匹配</div>
+                    <div type="div" class="btn btn-success div_button">最长有效括号</div>
+                    <div type="div" class="btn btn-success div_button">通配符匹配</div>
+                    <div type="div" class="btn btn-success div_button">最大子序和</div>
+                    <div type="div" class="btn btn-success div_button">不同路径</div>
+                    <div type="div" class="btn btn-success div_button">不同路径Ⅱ</div>
+                    <div type="div" class="btn btn-success div_button">最小路径和</div>
+                </div>
+
+                <div style="margin:10px;">
+                    <div class="div_Title">字符串</div>
+                    <div type="div" class="btn btn-info div_button">无重复字符的最长子串</div>
+                    <div type="div" class="btn btn-info div_button">最长回文子串</div>
+                    <div type="div" class="btn btn-info div_button">Z字形变换</div>
+                    <div type="div" class="btn btn-info div_button">字符串转换整数（atoi）</div>
+                    <div type="div" class="btn btn-info div_button">正则表达式匹配</div>
+                    <div type="div" class="btn btn-info div_button">整数转罗马数字</div>
+                    <div type="div" class="btn btn-info div_button">罗马数字转整数</div>
+                    <div type="div" class="btn btn-info div_button">最长公共前缀</div>
+                </div>
+
+                <div style="margin:10px;">
+                    <div class="div_Title">数学</div>
+                    <div type="div" class="btn btn-info div_button">两数相加</div>
+                    <div type="div" class="btn btn-info div_button">整数反转</div>
+                    <div type="div" class="btn btn-info div_button">Z字形变换</div>
+                    <div type="div" class="btn btn-info div_button">字符串转换整数（atoi）</div>
+                    <div type="div" class="btn btn-info div_button">正则表达式匹配</div>
+                    <div type="div" class="btn btn-info div_button">整数转罗马数字</div>
+                    <div type="div" class="btn btn-info div_button">罗马数字转整数</div>
+                    <div type="div" class="btn btn-info div_button">最长公共前缀</div>
+                </div>
+
+                <div style="margin:10px;">
+                    <div class="div_Title">树</div>
+                    <div type="div" class="btn btn-info div_button">两数相加</div>
+                    <div type="div" class="btn btn-info div_button">整数反转</div>
+                    <div type="div" class="btn btn-info div_button">Z字形变换</div>
+                    <div type="div" class="btn btn-info div_button">字符串转换整数（atoi）</div>
+                    <div type="div" class="btn btn-info div_button">正则表达式匹配</div>
+                    <div type="div" class="btn btn-info div_button">整数转罗马数字</div>
+                    <div type="div" class="btn btn-info div_button">罗马数字转整数</div>
+                    <div type="div" class="btn btn-info div_button">最长公共前缀</div>
+                </div>
+
+                <div style="margin:10px;">
+                    <div class="div_Title">深度优先搜索</div>
+                    <div type="div" class="btn btn-info div_button">两数相加</div>
+                    <div type="div" class="btn btn-info div_button">整数反转</div>
+                    <div type="div" class="btn btn-info div_button">Z字形变换</div>
+                    <div type="div" class="btn btn-info div_button">字符串转换整数（atoi）</div>
+                    <div type="div" class="btn btn-info div_button">正则表达式匹配</div>
+                    <div type="div" class="btn btn-info div_button">整数转罗马数字</div>
+                    <div type="div" class="btn btn-info div_button">罗马数字转整数</div>
+                    <div type="div" class="btn btn-info div_button">最长公共前缀</div>
+                </div>
+
+                <div style="margin:10px;">
+                    <div class="div_Title">哈希表</div>
+                    <div type="div" class="btn btn-info div_button">两数相加</div>
+                    <div type="div" class="btn btn-info div_button">整数反转</div>
+                    <div type="div" class="btn btn-info div_button">Z字形变换</div>
+                    <div type="div" class="btn btn-info div_button">字符串转换整数（atoi）</div>
+                    <div type="div" class="btn btn-info div_button">正则表达式匹配</div>
+                    <div type="div" class="btn btn-info div_button">整数转罗马数字</div>
+                    <div type="div" class="btn btn-info div_button">罗马数字转整数</div>
+                    <div type="div" class="btn btn-info div_button">最长公共前缀</div>
+                </div>
+            </div>
+
+            <div class="col-md-6 column">
+                <div class="div_TextArea">
+                    <div>题目：</div>
+                    <div id="SubjectArea">
+
+                    </div>
+                </div>
+
+                <div class="div_TextArea">
+                    <div>
+                        代码：
+                        <div id="CodeArea">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="div_TextArea">
+                    <div>
+                        结果：
+
+                        <div id="ResultArea">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    $(function () {
+
+    })
+
+    //两数之和
+    $(document).on("click", "#TwoSum", function () {
+        var nums = [2, 7, 11, 15];
+        var target = 9;
+        var result = TwoSum(nums, target);
+
+        AddSubjectContent(
+            "给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</br>" +
+            "示例:</br>" +
+            "给定 nums = [2, 7, 11, 15], target = 9 </br>" +
+            "因为 nums[0] + nums[1] = 2 + 7 = 9 </br>" +
+            "所以返回[0, 1] </br>",
+            TwoSum.toString(),
+            JSON.stringify(result)
+        )
+    });
+
+    //三数之和
+    $(document).on("click", "#ThreeSum", function () {
+        var nums = [- 1, 0, 1, 2, -1, -4];
+
+        var result = ThreeSum(nums);
+
+        AddSubjectContent(
+            "给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。注意：答案中不可以包含重复的三元组。</br>" +
+            "示例:</br>" +
+            "给定 nums = [ -1, 0, 1, 2, -1, -4]，</br>" +
+            "满足要求的三元组集合为：</br>" +
+            "[ </br>" +
+            "[-1, 0, 1], </br>" +
+            "[-1, -1, 2] </br>" +
+            "] </br>",
+            ThreeSum.toString(),
+            JSON.stringify(result)
+        )
+    });
+
+    /*
+     * 添加题目内容、代码、输出结果
+     @ Subject  题目
+     @ Code     实现代码
+     @ Result   执行结果
+    */
+    function AddSubjectContent(Subject, Code, Result) {
+        $("#SubjectArea").html(Subject);
+        $("#CodeArea").html(Code);
+        $("#ResultArea").html(Result);
+    }
+</script>
