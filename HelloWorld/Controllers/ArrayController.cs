@@ -303,5 +303,65 @@ namespace LeetCodeItemBank.Controllers
 
             return result;
         }
+
+        /// <summary>
+        /// 27#移除元素.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="val"></param>
+        /// <returns>移除元素之后，数组的长度.</returns>
+        public int RemoveElement(int[] nums, int val)
+        {
+            int n = nums.Count();
+            if (n == 0 || nums == null) return 0;
+
+            int i = 0;
+            foreach (int num in nums)
+            {
+                if (num != val)
+                {
+                    nums[i++] = num;
+                }
+            }
+
+            return i;
+        }
+
+        /// <summary>
+        /// 31#下一个排列
+        /// </summary>
+        /// <param name="nums"></param>
+        public void NextPermutation(int[] nums)
+        {
+            //if (nums.Count() <= 1) return;
+            //int j = nums.Count() - 1;
+            //while (j - 1 >= 0 && nums[j - 1] >= nums[j]) { --j; }
+            //if (j == 0)
+            //{
+            //    for (int i = 0; i < nums.Count() / 2; ++i)
+            //    {
+            //        swap(nums[i], nums[nums.Count() - 1 - i]);
+            //    }
+
+            //    return;
+            //}
+
+            //int r = nums.Count() - 1;
+            //while (r >= j)
+            //{
+            //    if (nums[r] > nums[j - 1]) break;
+            //    --r;
+            //}
+
+            //swap(nums[r], nums[j - 1]);
+            //int cnt = (nums.Count() - j) / 2;
+            //int i = 0;
+            //while (cnt > 0)
+            //{
+            //    swap(nums[j + i], nums[nums.Count() - 1 - i]);
+            //    ++i; --cnt;
+            //}
+            //return;
+        }
     }
 }

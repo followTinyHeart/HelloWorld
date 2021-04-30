@@ -115,5 +115,25 @@ namespace LeetCodeItemBank.Tests
 
             Console.WriteLine(JsonConvert.SerializeObject(result));
         }
+
+        /// <summary>
+        /// 27#移除元素.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void RemoveElementTest() 
+        {
+            int[] nums = { 0, 1, 2, 2, 3, 0, 4, 2 };
+            int nVal = 2;
+            int result = 0;
+
+            ArrayController arrayController = new ArrayController();
+            result = arrayController.RemoveElement(nums, nVal);
+
+            Console.WriteLine(JsonConvert.SerializeObject(result));
+        }
     }
 }
