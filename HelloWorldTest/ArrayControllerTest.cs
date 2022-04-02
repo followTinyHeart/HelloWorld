@@ -135,5 +135,22 @@ namespace LeetCodeItemBank.Tests
 
             Console.WriteLine(JsonConvert.SerializeObject(result));
         }
+
+        /// <summary>
+        /// 33# 搜索旋转排序数组.
+        /// </summary>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void SearchTest()
+        {
+            int[] nums = { 4, 5, 6, 7, 0, 1, 2 };
+            int target = 3;
+            int result = 0;
+
+            ArrayController arrayController = new ArrayController();
+            result = arrayController.Search(nums, target);
+
+            Console.WriteLine(result);
+        }
     }
 }

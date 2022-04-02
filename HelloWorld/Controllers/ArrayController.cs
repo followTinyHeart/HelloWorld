@@ -363,5 +363,17 @@ namespace LeetCodeItemBank.Controllers
             //}
             //return;
         }
+
+        /// <summary>
+        /// 33# 搜索旋转排序数组.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public int Search(int[] nums, int target)
+        {
+            for (int i = 0; i < nums.Length; i++) { if (nums[i] == target) return i; }
+            return -1;
+        }
     }
 }
