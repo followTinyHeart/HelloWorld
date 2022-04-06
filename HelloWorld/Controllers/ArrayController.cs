@@ -417,12 +417,50 @@ namespace LeetCodeItemBank.Controllers
         }
 
         /// <summary>
-        /// 
+        /// 35# 搜索插入位置.
         /// </summary>
-        public void Test() 
+        /// <param name="nums">排序数组.</param>
+        /// <param name="target">目标值.</param>
+        /// <returns></returns>
+        public int SearchInsert(int[] nums, int target)
         {
-            int result = 0;
-            String str = String.Empty;
+            int result = -1;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] >= target)
+                {
+                    return i;
+                }
+            }
+
+            return nums.Length;
+
+            // 自己的方法.
+            //List<int> numxList = new List<int>(nums);
+
+            //if (nums.Length > 0)
+            //{
+            //    numxList.Add(target);
+            //    numxList.Sort();
+
+            //    for (int i = 0; i < numxList.Count(); i++)
+            //    {
+            //        if (numxList[i] == target )
+            //        {
+            //            if (result == -1)
+            //            {
+            //                result = i;
+            //            }
+            //        }
+            //    }
+            //}
+            //else 
+            //{
+            //    result = 0;
+            //}
+
+            //return result;
         }
     }
 }

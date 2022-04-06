@@ -172,5 +172,25 @@ namespace LeetCodeItemBank.Tests
 
             Console.WriteLine(String.Join(",", result));
         }
+
+        /// <summary>
+        /// 35# 搜索插入位置.
+        /// </summary>
+        /// <param name="nums">排序数组.</param>
+        /// <param name="target">目标值.</param>
+        /// <returns></returns>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void SearchInsertTest() 
+        {
+            int result = -1;
+            int[] numx = new int[] { 1, 3, 5,6 };
+            int target = 2;
+
+            ArrayController arrayController = new ArrayController();
+            result = arrayController.SearchInsert(numx, target);
+
+            Console.WriteLine(result);
+        }
     }
 }
