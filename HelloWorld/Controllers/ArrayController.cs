@@ -9,7 +9,7 @@ namespace LeetCodeItemBank.Controllers
     {
         /// <summary>
         /// #1两数之和.
-        /// for循环的嵌套使用
+        /// for循环的嵌套使用.
         /// </summary>
         /// <param name="nums"></param>
         /// <param name="target"></param>
@@ -95,7 +95,7 @@ namespace LeetCodeItemBank.Controllers
         }
 
         /// <summary>
-        /// #11盛最多水的容器
+        /// #11盛最多水的容器.
         /// </summary>
         /// Math.Max和Math.Min方法的使用
         /// <param name="height"></param>
@@ -117,7 +117,7 @@ namespace LeetCodeItemBank.Controllers
 
 
         /// <summary>
-        /// 15#三数之和
+        /// 15#三数之和.
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
@@ -198,7 +198,7 @@ namespace LeetCodeItemBank.Controllers
 
 
         /// <summary>
-        /// 16#最接近的三数之和
+        /// 16#最接近的三数之和.
         /// </summary>
         /// <param name="nums"></param>
         /// <param name="target"></param>
@@ -275,7 +275,7 @@ namespace LeetCodeItemBank.Controllers
 
 
         /// <summary>
-        /// 18#四数之和
+        /// 18#四数之和.
         /// </summary>
         /// <param name="nums"></param>
         /// <param name="target"></param>
@@ -291,7 +291,7 @@ namespace LeetCodeItemBank.Controllers
 
 
         /// <summary>
-        /// 26#删除排序数组中的重复项
+        /// 26#删除排序数组中的重复项.
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
@@ -328,7 +328,7 @@ namespace LeetCodeItemBank.Controllers
         }
 
         /// <summary>
-        /// 31#下一个排列
+        /// 31#下一个排列.
         /// </summary>
         /// <param name="nums"></param>
         public void NextPermutation(int[] nums)
