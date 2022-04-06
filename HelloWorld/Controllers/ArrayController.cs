@@ -363,5 +363,66 @@ namespace LeetCodeItemBank.Controllers
             //}
             //return;
         }
+
+        /// <summary>
+        /// 33# 搜索旋转排序数组.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public int Search(int[] nums, int target)
+        {
+            for (int i = 0; i < nums.Length; i++) { if (nums[i] == target) return i; }
+            return -1;
+        }
+
+        /// <summary>
+        /// 34# 在排序数组中查找元素的第一个和最后一个位置.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public int[] SearchRange(int[] nums, int target)
+        {
+            int[] result = new int[nums.Length];
+
+            if (nums.Length > 0)
+            {
+                int startNum = -1;
+                int endNum = -1;
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    if (nums[i] == target)
+                    {
+                        if (startNum == -1)
+                        {
+                            startNum = i;
+                        }
+
+                        if (startNum > -1)
+                        {
+                            endNum = i;
+                        }
+                    }
+                }
+
+                result = new int[] { startNum, endNum };
+            }
+            else 
+            {
+                result = new int[] { -1, -1 };
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Test() 
+        {
+            int result = 0;
+            String str = String.Empty;
+        }
     }
 }

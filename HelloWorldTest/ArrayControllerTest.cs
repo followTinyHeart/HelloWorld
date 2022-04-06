@@ -135,5 +135,42 @@ namespace LeetCodeItemBank.Tests
 
             Console.WriteLine(JsonConvert.SerializeObject(result));
         }
+
+        /// <summary>
+        /// 33# 搜索旋转排序数组.
+        /// </summary>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void SearchTest()
+        {
+            int[] nums = { 4, 5, 6, 7, 0, 1, 2 };
+            int target = 3;
+            int result = 0;
+
+            ArrayController arrayController = new ArrayController();
+            result = arrayController.Search(nums, target);
+
+            Console.WriteLine(result);
+        }
+
+        /// <summary>
+        /// 34# 在排序数组中查找元素的第一个和最后一个位置.
+        /// </summary>
+        /// <param name="nums">按照升序排列的整数数组.</param>
+        /// <param name="target">目标值 .</param>
+        /// <returns></returns>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void SearchRangeTest() 
+        {
+            int[] nums = new int[] {  };
+            int target = 0;
+            int[] result = new int[nums.Length];
+
+            ArrayController arrayController = new ArrayController();
+            result = arrayController.SearchRange(nums, target);
+
+            Console.WriteLine(String.Join(",", result));
+        }
     }
 }
