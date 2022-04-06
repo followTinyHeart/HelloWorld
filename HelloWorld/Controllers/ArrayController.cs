@@ -375,5 +375,45 @@ namespace LeetCodeItemBank.Controllers
             for (int i = 0; i < nums.Length; i++) { if (nums[i] == target) return i; }
             return -1;
         }
+
+        /// <summary>
+        /// 34# 在排序数组中查找元素的第一个和最后一个位置.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public int[] SearchRange(int[] nums, int target)
+        {
+            int[] result = new int[nums.Length];
+
+            if (nums.Length > 0)
+            {
+                int startNum = -1;
+                int endNum = -1;
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    if (nums[i] == target)
+                    {
+                        if (startNum == -1)
+                        {
+                            startNum = i;
+                        }
+
+                        if (startNum > -1)
+                        {
+                            endNum = i;
+                        }
+                    }
+                }
+
+                result = new int[] { startNum, endNum };
+            }
+            else 
+            {
+                result = new int[] { -1, -1 };
+            }
+
+            return result;
+        }
     }
 }
