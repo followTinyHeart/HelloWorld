@@ -416,6 +416,13 @@ namespace LeetCodeItemBank.Controllers
             return result;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Test() 
+        {
+            int result = 0;
+            String str = String.Empty;
+        }
     }
 }
