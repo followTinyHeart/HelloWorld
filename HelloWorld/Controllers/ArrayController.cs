@@ -502,5 +502,74 @@ namespace LeetCodeItemBank.Controllers
             }
             return true;
         }
+
+        /// <summary>
+        /// 37# 解数独.
+        /// </summary>
+        /// <param name="board"></param>
+        public void SolveSudoku(char[][] board)
+        {
+
+        }
+
+        /// <summary>
+        /// 39# 组合总和.
+        /// </summary>
+        /// <param name="candidates">无重复元素整数数组.</param>
+        /// <param name="target">目标值.</param>
+        /// <returns></returns>
+        public IList<IList<int>> CombinationSum(int[] candidates, int target)
+        {
+            IList<IList<int>> sum = new List<IList<int>>();
+
+            // 排序
+            var candidateList = candidates.ToList();
+            candidateList.Sort();
+            Backtrack(candidateList.ToArray(), target, new List<int>(), 0, 0, sum);
+
+            return sum;
+        }
+
+        /// <summary>
+        /// 回溯算法.
+        /// </summary>
+        /// <param name="candidates">整数数组.</param>
+        /// <param name="target">目标整数.</param>
+        /// <param name="temp">临时列表.</param>
+        /// <param name="sum">列表中整数和.</param>
+        /// <param name="i">索引.</param>
+        /// <param name="res">结果集.</param>
+        private void Backtrack(int[] candidates, int target, List<int> temp, int sum, int i, IList<IList<int>> res)
+        {
+            // 当前值可以重复被选取，从索引i开始遍历.
+            for (int j = i; j < candidates.Length; j++)
+            {
+                // 临时列表中加入对应索引j的值.
+                temp.Add(candidates[j]);
+
+                // 累计和.
+                sum += candidates[j];
+
+                // 大于等于目标值时，后续循环只会使和更大，处理后可以直接结束循环.
+                if (sum >= target)
+                {
+                    // 满足和等于目标值加入结果集.
+                    if (sum == target)
+                        res.Add(temp.ToArray());
+                    // 临时列表回溯，并跳出循环
+                    temp.RemoveAt(temp.Count - 1);
+                    break;
+                }
+                else
+                {
+                    // 当和小于目标值时，继续递归进行累计，注意因为同一数字可重复使用所以索引传入j.
+                    Backtrack(candidates, target, temp, sum, j, res);
+                    // 临时列表回溯
+                    temp.RemoveAt(temp.Count - 1);
+                    // 减去对应值
+                    sum -= candidates[j];
+                }
+            }
+        }
     }
 }

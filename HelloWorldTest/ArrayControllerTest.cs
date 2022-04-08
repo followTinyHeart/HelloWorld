@@ -219,5 +219,26 @@ namespace LeetCodeItemBank.Tests
 
             Console.WriteLine(result); 
         }
+
+        /// <summary>
+        /// 39# 组合总和.
+        /// </summary>
+        /// <param name="candidates">无重复元素整数数组.</param>
+        /// <param name="target">目标值.</param>
+        /// <returns></returns>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void CombinationSumTest() 
+        {
+            IList<IList<int>> result = new List<IList<int>>();
+
+            int[] candidates = new int[] { 2,3,6,7};
+            int target = 7;
+
+            ArrayController arrayController = new ArrayController();
+            result = arrayController.CombinationSum(candidates, target);
+
+            Console.WriteLine(JsonConvert.SerializeObject(result));
+        }
     }
 }
