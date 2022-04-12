@@ -240,5 +240,26 @@ namespace LeetCodeItemBank.Tests
 
             Console.WriteLine(JsonConvert.SerializeObject(result));
         }
+
+        /// <summary>
+        /// 40# 组合总和Ⅱ.
+        /// </summary>
+        /// <param name="candidates">候选人编号集合.</param>
+        /// <param name="target">目标数.</param>
+        /// <returns></returns>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void CombinationSum2Test()
+        {
+            IList<IList<int>> result = new List<IList<int>>();
+
+            int[] candidates = new int[] { 10,1,2,7,6,1,5};
+            int target = 8;
+
+            ArrayController arrayController = new ArrayController();
+            result = arrayController.CombinationSum2(candidates, target);
+
+            Console.WriteLine(JsonConvert.SerializeObject(result));
+        }
     }
 }

@@ -571,5 +571,50 @@ namespace LeetCodeItemBank.Controllers
                 }
             }
         }
+
+        /// <summary>
+        /// 40# 组合总和Ⅱ.
+        /// </summary>
+        /// <param name="candidates">候选人编号集合.</param>
+        /// <param name="target">目标数.</param>
+        /// <returns></returns>
+        public IList<IList<int>> CombinationSum2(int[] candidates, int target)
+        {
+            IList<IList<int>> sum = new List<IList<int>>();
+
+            // 排序
+            var candidateList = candidates.ToList();
+            candidateList.Sort();
+            Backtrack2(candidateList.ToArray(), target, new List<int>(), 0, sum);
+
+            return sum;
+        }
+
+        /// <summary>
+        /// 回溯算法,去掉重复.
+        /// </summary>
+        /// /// <param name="candidates">整数数组.</param>
+        /// <param name="target">目标整数.</param>
+        /// <param name="temp">临时列表.</param>
+        /// <param name="sum">列表中整数和.</param>
+        /// <param name="i">索引.</param>
+        /// <param name="res">结果集.</param>
+        private void Backtrack2(int[] candidates, int target, List<int> temp, int i, IList<IList<int>> res) 
+        {
+            if (target == 0)
+                res.Add(temp.ToArray());
+            else if (target > 0)
+                for (int j = i; j < candidates.Length; j++)
+                {
+                    // 剪枝，当j不是循环中第一个值，且当前值等于前一个值时，重复，去除
+                    if (j > i && candidates[j] == candidates[j - 1])
+                        continue;
+                    temp.Add(candidates[j]);
+                    target -= candidates[j];
+                    Backtrack2(candidates, target, temp, j + 1, res);
+                    temp.RemoveAt(temp.Count - 1);
+                    target += candidates[j];
+                }
+        }
     }
 }
