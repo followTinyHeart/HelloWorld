@@ -471,9 +471,9 @@ namespace LeetCodeItemBank.Controllers
         public bool IsValidSudoku(char[][] board)
         {
             // 定义数字行内出现的次数
-            int[,] row = new int[9,9];
+            int[,] row = new int[9, 9];
             //定义数字列内出现的次数
-            int[,] column = new int[9,9];
+            int[,] column = new int[9, 9];
             //定义数字九宫格内出现的次数最大为9次
             int[,,] jiugongge = new int[3, 3, 9];
 
@@ -490,13 +490,13 @@ namespace LeetCodeItemBank.Controllers
                         int index = c - '1';
                         //这个时候++意思是第i行这个c值次数+1，默认row第二位就是{1-9}-1；每一行都有可能是1-9
                         //例如现在是第一行第一列是9，就在row[1][8]号位置+1
-                        row[i,index]++;
+                        row[i, index]++;
                         //列同理
-                        column[j,index]++;
+                        column[j, index]++;
                         //并且九宫格内次数也要+1,例如也是第1行第一列，i/3 j/3会自动定位到所在的小宫格
-                        jiugongge[i / 3,j / 3,index]++;
+                        jiugongge[i / 3, j / 3, index]++;
                         //次数大于1就不成立一个数独
-                        if (row[i,index] > 1 || column[j,index] > 1 || jiugongge[i / 3,j / 3,index] > 1) return false;
+                        if (row[i, index] > 1 || column[j, index] > 1 || jiugongge[i / 3, j / 3, index] > 1) return false;
                     }
                 }
             }
@@ -599,7 +599,7 @@ namespace LeetCodeItemBank.Controllers
         /// <param name="sum">列表中整数和.</param>
         /// <param name="i">索引.</param>
         /// <param name="res">结果集.</param>
-        private void Backtrack2(int[] candidates, int target, List<int> temp, int i, IList<IList<int>> res) 
+        private void Backtrack2(int[] candidates, int target, List<int> temp, int i, IList<IList<int>> res)
         {
             if (target == 0)
                 res.Add(temp.ToArray());
@@ -615,6 +615,59 @@ namespace LeetCodeItemBank.Controllers
                     temp.RemoveAt(temp.Count - 1);
                     target += candidates[j];
                 }
+        }
+
+        /// <summary>
+        /// 41# 缺失的第一个正数.
+        /// </summary>
+        /// <param name="nums">未排序的整数数组.</param>
+        /// <returns></returns>
+        public int FirstMissingPositive(int[] nums)
+        {
+            int len = nums.Length - 1;
+            if (len == 0 && nums[0] == 1) return 2;
+
+            //第一步先将所有正数全部放置在相应索引上 单指针
+            int quick = 0;
+            while (quick <= len)
+            {
+                if (nums[quick] > 0 && nums[quick] <= len + 1)
+                {
+                    int temp = nums[quick] - 1;
+                    while (nums[temp] != temp + 1)
+                    {
+                        //这一步的目的是将nums[temp]赋值为temp+1
+                        //同时记录nums[temp]的原始值index
+                        //对num[index]做相同操作
+                        int index = nums[temp];
+                        nums[temp] = temp + 1;
+                        //如果下一个列表值小于0则直接赋值并跳出循环
+                        //如果index的值大于列表长度也直接跳出
+                        if (index - 1 < 0 || index - 1 > len)
+                        {
+                            break;
+                        }
+                        //如果下一个值为正数则继续交换
+                        else
+                        {
+                            temp = index - 1;
+                        }
+                    }
+                }
+                else
+                {
+                    nums[quick] = -1;
+                }
+                quick++;
+            }
+
+            //第二步沿着数组寻找点
+            for (int i = 0; i <= len; i++)
+            {
+                if (nums[i] != i + 1) return i + 1;
+            }
+
+            return len + 2;
         }
     }
 }

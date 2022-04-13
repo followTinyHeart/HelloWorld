@@ -261,5 +261,23 @@ namespace LeetCodeItemBank.Tests
 
             Console.WriteLine(JsonConvert.SerializeObject(result));
         }
+
+        /// <summary>
+        /// 41# 缺失的第一个正数.
+        /// </summary>
+        /// <param name="nums">未排序的整数数组.</param>
+        /// <returns></returns>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void FirstMissingPositiveTest() 
+        {
+            int result = 0;
+            int[] nums = new int[] { 0,2,2,1,1,};
+
+            ArrayController arrayController = new ArrayController();
+            result =  arrayController.FirstMissingPositive(nums);
+
+            Console.WriteLine(result);
+        }
     }
 }
