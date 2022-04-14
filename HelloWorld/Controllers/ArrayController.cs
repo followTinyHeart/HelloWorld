@@ -669,5 +669,37 @@ namespace LeetCodeItemBank.Controllers
 
             return len + 2;
         }
+
+        /// <summary>
+        /// 42# 接雨水.
+        /// </summary>
+        /// <param name="height">非负整数数组.</param>
+        /// <returns></returns>
+        public int Trap(int[] height)
+        {
+            int n = height.Length;
+            if (n == 0)
+                return 0;
+
+            int[,] dp = new int[n, 2];
+            dp[0, 0] = height[0];
+            dp[n - 1, 1] = height[n - 1];
+            for (int i = 1; i < n; i++)
+            {
+                dp[i, 0] = Math.Max(height[i], dp[i - 1, 0]);
+            }
+            for (int i = n - 2; i >= 0; i--)
+            {
+                dp[i, 1] = Math.Max(height[i], dp[i + 1, 1]);
+            }
+
+            int res = 0;
+            for (int i = 1; i < n - 1; i++)
+            {
+                res += Math.Min(dp[i, 0], dp[i, 1]) - height[i];
+            }
+
+            return res;
+        }
     }
 }

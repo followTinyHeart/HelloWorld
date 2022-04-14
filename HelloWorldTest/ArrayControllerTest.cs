@@ -279,5 +279,23 @@ namespace LeetCodeItemBank.Tests
 
             Console.WriteLine(result);
         }
+
+        /// <summary>
+        /// 42# 接雨水.
+        /// </summary>
+        /// <param name="height">非负整数数组.</param>
+        /// <returns></returns>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void TrapTest() 
+        {
+            int result = 0;
+            int[] height = new int[] { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
+
+            ArrayController arrayController = new ArrayController();
+            result = arrayController.Trap(height);
+
+            Console.WriteLine(result);
+        }
     }
 }
