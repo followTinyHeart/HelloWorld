@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LeetCodeItemBank.Controllers
+namespace HelloWorld.Controllers
 {
     public class ArrayController : Controller
     {
@@ -682,12 +682,14 @@ namespace LeetCodeItemBank.Controllers
                 return 0;
 
             int[,] dp = new int[n, 2];
-            dp[0, 0] = height[0];
-            dp[n - 1, 1] = height[n - 1];
+            dp[0, 0] = height[0];               // 第一位.
+            dp[n - 1, 1] = height[n - 1];       // 最后一位.
+
             for (int i = 1; i < n; i++)
             {
                 dp[i, 0] = Math.Max(height[i], dp[i - 1, 0]);
             }
+
             for (int i = n - 2; i >= 0; i--)
             {
                 dp[i, 1] = Math.Max(height[i], dp[i + 1, 1]);
@@ -701,5 +703,44 @@ namespace LeetCodeItemBank.Controllers
 
             return res;
         }
+
+        /// <summary>
+        /// 45# 跳跃游戏Ⅱ.
+        /// </summary>
+        /// <param name="nums">非负整数数组.</param>
+        /// <returns></returns>
+        public int Jump(int[] nums)
+        {
+            int len = nums.Length;
+            if (len == 1) { return 0; }
+
+            // 记录能够到达的最远距离.
+            int k = 0;
+            // 步数.
+            int step = 0;
+            // 记录上一步step跳的最远距离.
+            int end = 0;
+
+            for (int i = 0; i < len; i++)
+            {
+                // 更新最大距离.
+                k = Math.Max(k, i + nums[i]);
+
+                // 大于数组的总长,即能跳到最后的位置.
+                if (k >= len-1)
+                {
+                    return step + 1;
+                }
+
+                if (end == i) 
+                {
+                    step++;
+                    end = k;
+                }
+            }
+
+            return step;
+        }
+
     }
 }

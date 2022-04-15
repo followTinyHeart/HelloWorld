@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LeetCodeItemBank.Tests
+namespace HelloWorldTest
 {
     [TestClass]
     public class DynamicProgrammingControllerTest

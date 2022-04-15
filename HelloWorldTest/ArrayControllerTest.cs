@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LeetCodeItemBank.Controllers;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using HelloWorld.Controllers;
 
-namespace LeetCodeItemBank.Tests
+namespace HelloWorldTest
 {
     /// <summary>
     /// 用于LeetCode题库的单元测试
@@ -12,6 +12,12 @@ namespace LeetCodeItemBank.Tests
     [TestClass]
     public class ArrayControllerTest
     {
+        private ArrayController controller;
+        public ArrayControllerTest() 
+        {
+            this.controller = new ArrayController();
+        }
+
         /// <summary>
         /// 两数之和
         /// </summary>
@@ -19,12 +25,12 @@ namespace LeetCodeItemBank.Tests
         [TestMethod]
         public void TwoSumTest()
         {
-            ArrayController controller = new ArrayController();
+            //ArrayController controller = new ArrayController();
 
             int[] nums = { 2, 7, 11, 15 };
             int target = 9;
 
-            int[] result = controller.TwoSum(nums, target);
+            int[] result = this.controller.TwoSum(nums, target);
 
             Console.WriteLine(JsonConvert.SerializeObject(result));
         }
@@ -294,6 +300,24 @@ namespace LeetCodeItemBank.Tests
 
             ArrayController arrayController = new ArrayController();
             result = arrayController.Trap(height);
+
+            Console.WriteLine(result);
+        }
+
+        /// <summary>
+        /// 45# 跳跃游戏Ⅱ.
+        /// </summary>
+        /// <param name="nums">非负整数数组.</param>
+        /// <returns></returns>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void JumpTest() 
+        {
+            int result = 0;
+            int[] nums = new int[] { 2, 3, 1, 1, 4 };
+
+            //ArrayController arrayController = new ArrayController();
+            result = this.controller.Jump(nums);
 
             Console.WriteLine(result);
         }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LeetCodeItemBank.Controllers
+namespace HelloWorld.Controllers
 {
     public class DynamicProgrammingController : Controller
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LeetCodeItemBank.Controllers;
+using HelloWorld.Controllers;
 
-namespace LeetCodeItemBank.Tests
+namespace HelloWorldTest
 {
     [TestClass]
     public class StrControllerTest

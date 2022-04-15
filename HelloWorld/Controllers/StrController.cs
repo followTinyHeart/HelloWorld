@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace LeetCodeItemBank.Controllers
+namespace HelloWorld.Controllers
 {
     public class StrController  : Controller
     {
