@@ -321,5 +321,38 @@ namespace HelloWorldTest
 
             Console.WriteLine(result);
         }
+
+        /// <summary>
+        /// 46# 全排列.
+        /// </summary>
+        /// <param name="nums">不含重复数字的数组.</param>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void PermuteTest() 
+        {
+            IList<IList<int>> result = new List<IList<int>>();
+            int[] nums = new int[] { 1, 2, 3 };
+
+            result = this.controller.Permute(nums);
+
+            Console.WriteLine(JsonConvert.SerializeObject(result));
+        }
+
+        /// <summary>
+        /// 47# 全排列Ⅱ.
+        /// </summary>
+        /// <param name="nums">可包含重复数字的序列.</param>
+        /// <returns></returns>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void AA() 
+        {
+            IList<IList<int>> result = new List<IList<int>>();
+            int[] nums = new int[] { 1, 1, 2 };
+
+            result = this.controller.PermuteUnique(nums);
+
+            Console.WriteLine(JsonConvert.SerializeObject(result));
+        }
     }
 }

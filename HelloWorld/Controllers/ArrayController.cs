@@ -424,8 +424,6 @@ namespace HelloWorld.Controllers
         /// <returns></returns>
         public int SearchInsert(int[] nums, int target)
         {
-            int result = -1;
-
             for (int i = 0; i < nums.Length; i++)
             {
                 if (nums[i] >= target)
@@ -742,5 +740,81 @@ namespace HelloWorld.Controllers
             return step;
         }
 
+        IList<IList<int>> result = new List<IList<int>>();
+        /// <summary>
+        /// 46# 全排列.
+        /// </summary>
+        /// <param name="nums">不含重复数字的数组.</param>
+        /// <returns></returns>
+        public IList<IList<int>> Permute(int[] nums)
+        {
+            //路径
+            LinkedList<int> track = new LinkedList<int>();
+            Backtrack3(nums, track);
+            return result;
+        }
+
+        /// <summary>
+        /// 回溯算法，循环前先结束条件，前序做选择，后序撤销选择
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="track"></param>
+        private void Backtrack3(int[] nums, LinkedList<int> track)
+        {
+            //触发结束条件
+            if (track.Count == nums.Length)
+            {
+                result.Add(new List<int>(track));
+                return;
+            }
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (track.Contains(nums[i]))
+                    continue;
+                track.AddLast(nums[i]);
+                Backtrack3(nums, track);
+                track.RemoveLast();
+            }
+        }
+
+        /// <summary>
+        /// 47# 全排列Ⅱ.
+        /// </summary>
+        /// <param name="nums">可包含重复数字的序列.</param>
+        /// <returns></returns>
+        public IList<IList<int>> PermuteUnique(int[] nums)
+        {
+            List<IList<int>> ans = new List<IList<int>>();
+            int len = nums.Length;
+            Array.Sort(nums);
+            Dfs(nums, len, 0, new bool[len], new LinkedList<int>(), ans);
+            return ans;
+        }
+
+        /// <summary>
+        /// .
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="track"></param>
+        public void Dfs(int[] nums, int len, int depth, bool[] used, LinkedList<int> pre, List<IList<int>> ans)
+        {
+            if (len == depth)
+            {
+                ans.Add(new List<int>(pre));
+                return;
+            }
+            for (int i = 0; i < len; i++)
+            {
+                if (used[i] || (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]))
+                {
+                    continue;
+                }
+                pre.AddLast(nums[i]);
+                used[i] = true;
+                Dfs(nums, len, depth + 1, used, pre, ans);
+                pre.RemoveLast();
+                used[i] = false;
+            }
+        }
     }
 }
