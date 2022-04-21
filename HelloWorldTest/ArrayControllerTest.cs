@@ -354,5 +354,25 @@ namespace HelloWorldTest
 
             Console.WriteLine(JsonConvert.SerializeObject(result));
         }
+
+        /// <summary>
+        /// 48# 旋转图像.
+        /// </summary>
+        /// <param name="matrix">n * n 二维矩阵.</param>
+        [TestMethod]
+        [TestCategory("数组")]
+        public void RotateTest()
+        {
+            int[][] matrix ={
+                                new int[] { 5,1,9,11 },
+                                new int[] { 2,4,8,10 },
+                                new int[] { 13,3,6,7 },
+                                new int[] { 15,14,12,16 }
+                            };
+            
+            this.controller.Rotate(matrix);
+
+            Console.WriteLine(JsonConvert.SerializeObject(matrix));
+        }
     }
 }

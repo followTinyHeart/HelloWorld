@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,271 @@ namespace HelloWorld.Controllers
 {
     public class ArrayController : Controller
     {
+        #region 十大经典排序算法.
+        //冒泡排序.
+        //选择排序.
+        //插入排序.
+        //希尔排序.
+        //归并排序.
+        //快速排序.
+        //堆排序.
+        //计数排序.
+        //桶排序.
+        //基数排序.
+
+        /// <summary>
+        /// 冒泡排序.
+        /// </summary>
+        /// <param name="intArray"></param>
+        public void BubbleSort(int[] intArray)
+        {
+            int temp = 0;
+            bool swapped;
+            for (int i = 0; i < intArray.Length; i++)
+            {
+                swapped = false;
+                for (int j = 0; j < intArray.Length - 1 - i; j++)
+                    if (intArray[j] > intArray[j + 1])
+                    {
+                        temp = intArray[j];
+                        intArray[j] = intArray[j + 1];
+                        intArray[j + 1] = temp;
+                        if (!swapped)
+                            swapped = true;
+                    }
+                if (!swapped)
+                    return;
+            }
+        }
+
+        /// <summary>
+        /// 选择排序.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr"></param>
+        public void selection_sort<T>(T[] arr) where T : System.IComparable<T>
+        {
+            //整數或浮點數皆可使用
+            int i, j, min, len = arr.Length;
+            T temp;
+            for (i = 0; i < len - 1; i++)
+            {
+                min = i;
+                for (j = i + 1; j < len; j++)
+                    if (arr[min].CompareTo(arr[j]) > 0)
+                        min = j;
+                temp = arr[min];
+                arr[min] = arr[i];
+                arr[i] = temp;
+            }
+        }
+
+        /// <summary>
+        /// 插入排序.
+        /// </summary>
+        /// <param name="array"></param>
+        public static void InsertSort(int[] array)
+        {
+            for (int i = 1; i < array.Length; i++)
+            {
+                int temp = array[i];
+                for (int j = i - 1; j >= 0; j--)
+                {
+                    if (array[j] > temp)
+                    {
+                        array[j + 1] = array[j];
+                        array[j] = temp;
+                    }
+                    else
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 希尔排序.
+        /// </summary>
+        /// <param name="arr"></param>
+        public void ShellSort(int[] arr)
+        {
+            int gap = 1;
+
+            while (gap < arr.Length)
+            {
+                gap = gap * 3 + 1;
+            }
+
+            while (gap > 0)
+            {
+                for (int i = gap; i < arr.Length; i++)
+                {
+                    int tmp = arr[i];
+                    int j = i - gap;
+                    while (j >= 0 && arr[j] > tmp)
+                    {
+                        arr[j + gap] = arr[j];
+                        j -= gap;
+                    }
+                    arr[j + gap] = tmp;
+                }
+                gap /= 3;
+            }
+        }
+
+        /// <summary>
+        /// 归并排序.
+        /// </summary>
+        /// <param name="lst"></param>
+        /// <returns></returns>
+        public List<int> sort(List<int> lst)
+        {
+            if (lst.Count <= 1)
+                return lst;
+            int mid = lst.Count / 2;
+            List<int> left = new List<int>();  // 定义左侧List
+            List<int> right = new List<int>(); // 定义右侧List
+                                               // 以下兩個循環把 lst 分為左右兩個 List
+            for (int i = 0; i < mid; i++)
+                left.Add(lst[i]);
+            for (int j = mid; j < lst.Count; j++)
+                right.Add(lst[j]);
+            left = sort(left);
+            right = sort(right);
+            return merge(left, right);
+        }
+        /// <summary>
+        /// 合併兩個已經排好序的List
+        /// </summary>
+        /// <param name="left">左側List</param>
+        /// <param name="right">右側List</param>
+        /// <returns></returns>
+        static List<int> merge(List<int> left, List<int> right)
+        {
+            List<int> temp = new List<int>();
+            while (left.Count > 0 && right.Count > 0)
+            {
+                if (left[0] <= right[0])
+                {
+                    temp.Add(left[0]);
+                    left.RemoveAt(0);
+                }
+                else
+                {
+                    temp.Add(right[0]);
+                    right.RemoveAt(0);
+                }
+            }
+            if (left.Count > 0)
+            {
+                for (int i = 0; i < left.Count; i++)
+                    temp.Add(left[i]);
+            }
+            if (right.Count > 0)
+            {
+                for (int i = 0; i < right.Count; i++)
+                    temp.Add(right[i]);
+            }
+            return temp;
+        }
+
+        /// <summary>
+        /// 堆排序
+        /// </summary>
+        /// <param name="arr">待排序数组</param>
+        static void HeapSort(int[] arr)
+        {
+            int vCount = arr.Length;
+            int[] tempKey = new int[vCount + 1];
+            // 元素索引从1开始
+            for (int i = 0; i < vCount; i++)
+            {
+                tempKey[i + 1] = arr[i];
+            }
+            // 初始数据建堆（从含最后一个结点的子树开始构建，依次向前，形成整个二叉堆）
+            for (int i = vCount / 2; i >= 1; i--)
+            {
+                Restore(tempKey, i, vCount);
+            }
+            // 不断输出堆顶元素、重构堆，进行排序
+            for (int i = vCount; i > 1; i--)
+            {
+                int temp = tempKey[i];
+                tempKey[i] = tempKey[1];
+                tempKey[1] = temp;
+                Restore(tempKey, 1, i - 1);
+            }
+            //排序结果
+            for (int i = 0; i < vCount; i++)
+            {
+                arr[i] = tempKey[i + 1];
+            }
+        }
+        /// <summary>
+        /// 二叉堆的重构（针对于已构建好的二叉堆首尾互换之后的重构）
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="rootNode">根结点j</param>
+        /// <param name="nodeCount">结点数</param>
+        static void Restore(int[] arr, int rootNode, int nodeCount)
+        {
+            while (rootNode <= nodeCount / 2) // 保证根结点有子树
+            {
+                //找出左右儿子的最大值
+                int m = (2 * rootNode + 1 <= nodeCount && arr[2 * rootNode + 1] > arr[2 * rootNode]) ? 2 * rootNode + 1 : 2 * rootNode;
+                if (arr[m] > arr[rootNode])
+                {
+                    int temp = arr[m];
+                    arr[m] = arr[rootNode];
+                    arr[rootNode] = temp;
+                    rootNode = m;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 桶排序.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="bucketCount"></param>
+        /// <param name="maxBucketCount"></param>
+        public void BucketSort(List<int> list, int bucketCount, int maxBucketCount)
+        {
+            List<List<int>> buckets = new List<List<int>>(bucketCount);//二维列表
+            for (int i = 0; i < bucketCount; i++)
+            {
+                buckets.Add(new List<int>());
+            }
+            for (int i = 0; i < list.Count; i++)
+            {
+                // int j = Mathf.Min(list[i] / (maxBucketCount / bucketCount), bucketCount - 1);//j表示改放的哪个桶,不能大于n-1
+                int j = Math.Min(list[i] / (maxBucketCount / bucketCount), bucketCount - 1);//j表示改放的哪个桶,不能大于n-1
+                buckets[j].Add(list[i]);//放入对应桶
+                for (int x = buckets[j].Count - 1; x > 0; x--)//放一个排序一次，两两对比就可以
+                {
+                    if (buckets[j][x] < buckets[j][x - 1])//升序
+                    {
+                        int tmp = buckets[j][x];//交换
+                        buckets[j][x] = buckets[j][x - 1];
+                        buckets[j][x - 1] = tmp;
+                    }
+                    else
+                    {
+                        break;//如果不发生交换直接退出，因为前面的之前就排序好了
+                    }
+                }
+            }
+            list.Clear();//输出
+            for (int i = 0; i < buckets.Count; i++)
+            {
+                list.AddRange(buckets[i]);
+            }
+        }
+        #endregion
+
         /// <summary>
         /// #1两数之和.
         /// for循环的嵌套使用.
@@ -470,8 +736,10 @@ namespace HelloWorld.Controllers
         {
             // 定义数字行内出现的次数
             int[,] row = new int[9, 9];
+
             //定义数字列内出现的次数
             int[,] column = new int[9, 9];
+
             //定义数字九宫格内出现的次数最大为9次
             int[,,] jiugongge = new int[3, 3, 9];
 
@@ -725,12 +993,12 @@ namespace HelloWorld.Controllers
                 k = Math.Max(k, i + nums[i]);
 
                 // 大于数组的总长,即能跳到最后的位置.
-                if (k >= len-1)
+                if (k >= len - 1)
                 {
                     return step + 1;
                 }
 
-                if (end == i) 
+                if (end == i)
                 {
                     step++;
                     end = k;
@@ -815,6 +1083,55 @@ namespace HelloWorld.Controllers
                 pre.RemoveLast();
                 used[i] = false;
             }
+        }
+
+        /// <summary>
+        /// 48# 旋转图像.
+        /// </summary>
+        /// <param name="matrix">n * n 二维矩阵.</param>
+        public void Rotate(int[][] matrix)
+        {
+            #region new新数组的方式.
+            //String result = String.Empty;
+
+            //int[,] ints = new int[matrix.Length, matrix[0].Length];
+            
+            //int colIndex = 0;
+            //for (int i = 0; i < matrix[0].Length; i++)
+            //{
+            //    for (int j = matrix.Length - 1; j > -1; j--)
+            //    {
+            //        ints[i, colIndex] = matrix[j][i];
+            //        if (j == 0) { colIndex = 0; }
+            //        else { colIndex++; }
+            //    }
+            //}
+
+            //result = JsonConvert.SerializeObject(ints);
+
+            //return result;
+            #endregion
+
+            #region 原数组处理.
+            int temp = 0;
+
+            int rowIndex = 0;
+            for (int i = 0; i < matrix[0].Length; i++)
+            {
+                for (int j = matrix.Length - 1; j > matrix.Length - 2; j--)
+                {
+                    temp = matrix[i][rowIndex];
+
+                    matrix[i][rowIndex] = matrix[j][i];
+
+                    matrix[j][i] = temp;
+
+                    if (j == matrix.Length - 1) { rowIndex = 0; }
+                    else { rowIndex++; }
+                }
+            }
+
+            #endregion
         }
     }
 }
