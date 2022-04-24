@@ -1133,5 +1133,15 @@ namespace HelloWorld.Controllers
 
             #endregion
         }
+
+        /// <summary>
+        /// N皇后.
+        /// </summary>
+        /// <param name="n">整数N个皇后.</param>
+        /// <returns></returns>
+        public IList<IList<string>> SolveNQueens(int n)
+        {
+            return null;
+        }
     }
 }
