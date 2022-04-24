@@ -1135,7 +1135,7 @@ namespace HelloWorld.Controllers
         }
 
         /// <summary>
-        /// N皇后.
+        /// 51# N皇后.
         /// </summary>
         /// <param name="n">整数N个皇后.</param>
         /// <returns></returns>
