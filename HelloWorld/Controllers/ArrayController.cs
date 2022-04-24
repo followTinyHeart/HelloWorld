@@ -1141,7 +1141,9 @@ namespace HelloWorld.Controllers
         /// <returns></returns>
         public IList<IList<string>> SolveNQueens(int n)
         {
-            return null;
+            List<IList<String>> result = new List<IList<string>>();
+
+            return result;
         }
     }
 }

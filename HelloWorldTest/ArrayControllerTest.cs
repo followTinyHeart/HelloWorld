@@ -374,5 +374,16 @@ namespace HelloWorldTest
 
             Console.WriteLine(JsonConvert.SerializeObject(matrix));
         }
+
+        public void SolveNQueensTest() 
+        {
+            IList<IList<String>> result = new List<IList<String>>();
+
+            int n = 1;
+
+            result = this.controller.SolveNQueens(n);
+
+            Console.WriteLine(JsonConvert.SerializeObject(result));
+        }
     }
 }
