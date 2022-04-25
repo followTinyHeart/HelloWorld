@@ -72,5 +72,34 @@ namespace HelloWorld.Controllers
 
             }
         }
+
+        /// <summary>
+        /// 6# Z字形变换.
+        /// </summary>
+        /// <param name="s">给定字符串.</param>
+        /// <param name="numRows">行数.</param>
+        /// <returns></returns>
+        public string Convert(string s, int numRows)
+        {
+            String result = String.Empty;
+
+            String[,] strArr = new String[s.Length, numRows];
+            String[] row = new String[] { } ;
+            String[] col = new String[] { };
+
+            // 字符串转为数组.
+            String[] sArr = new String[s.Length];
+            for (int i = 0; i < sArr.Length; i++)
+            {
+                sArr[i] = s.Substring(i, 1);
+            }
+
+            for (int i = 0; i < numRows; i++)
+            {
+                row[i] = sArr[i];
+            }
+
+            return result;
+        }
     }
 }

@@ -74,7 +74,6 @@ namespace HelloWorldTest
             Console.WriteLine(JsonConvert.SerializeObject(result));
         }
 
-
         /// <summary>
         /// 三数之和
         /// </summary>
@@ -375,11 +374,18 @@ namespace HelloWorldTest
             Console.WriteLine(JsonConvert.SerializeObject(matrix));
         }
 
+        /// <summary>
+        /// 51# N皇后.
+        /// </summary>
+        /// <param name="n">整数N个皇后.</param>
+        /// <returns></returns>
+        [TestMethod]
+        [TestCategory("数组")]
         public void SolveNQueensTest() 
         {
             IList<IList<String>> result = new List<IList<String>>();
 
-            int n = 1;
+            int n = 4;
 
             result = this.controller.SolveNQueens(n);
 
