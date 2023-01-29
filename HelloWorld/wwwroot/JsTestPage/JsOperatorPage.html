@@ -5,6 +5,11 @@
     <title></title>
     <script src="../js/jquery-1.10.2.js"></script>
     <script src="../js/JsTest/JsOperator.js"></script>
+    <style>
+        * {
+            margin-top:20px;
+        }
+    </style>
 </head>
 <body>
     <h3>JS操作符</h3>
@@ -12,7 +17,7 @@
         <span onclick="JsOperator1()">数值分割符 _ ：</span>
         <span id="JsOperator1"></span>
     </div>
-    
+
     <div>
         <span onclick="JsOperator2()">逗号运算符 ,</span>
         <span id="JsOperator2"></span>
@@ -21,6 +26,11 @@
     <div>
         <span onclick="JsOperator3()">零合并操作符 ??</span>
         <span id="JsOperator3"></span>
+    </div>
+
+    <div>
+        <span onclick="GenerateRandomColor()">生成随机颜色值</span>
+        <span id="grC" style="display:block;width:50px;height:50px;border:1px solid red;"></span>
     </div>
 
 </body>
@@ -63,4 +73,112 @@
         a.c ??= 20
         console.log(a)     // 输出 { b: 20, c: 10 }
     }
+
+    // 生成随机颜色.
+    const generateRandomHexColor = () => `#${Math.floor(Math.random() * 0xffffff).toString(16)}`;
+    /**
+     * 生成随机颜色值.
+     * */
+    function GenerateRandomColor()
+    {
+        let val = generateRandomHexColor();
+        $("#grC").css("background-color", val);
+    }
+
+    /**
+     *  数组重排序.
+     * */
+    const shuffle = (arr) => arr.sort(() => Math.random() - 0.5)
+    const arr = [1, 2, 3, 4, 5];
+    //console.log(shuffle(arr));
+
+    /**
+     * 复制到剪切板.
+     * */
+    const copyToClipboard = (text) => navigator.clipboard && navigator.clipboard.writeText && navigator.clipboard.writeText(text);
+    //copyToClipboard("Hello World!");
+
+    /**
+     * 检测暗色主题.
+     * */
+    const isDarkMode = () => window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+    //console.log(isDarkMode());
+
+    /**
+     * 滚动到顶部.
+     * */
+    const scrollToTop = (element) =>
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    /**
+     * 滚动到底部.
+     * */
+    const scrollToBottom = (element) =>
+        element.scrollIntoView({ behavior: "smooth", block: "end" });
+
+    /**
+     * 检测元素是否在屏幕中 IntersectionObserver方法.
+     * */
+    const callback = (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // `entry.target` is the dom element
+                // console.log(`${entry.target.id} is visible`);
+            }
+        });
+    };
+
+    const options = {
+        threshold: 1.0,
+    };
+    const observer = new IntersectionObserver(callback, options);
+    const btn = document.getElementById("btn");
+    const bottomBtn = document.getElementById("bottom-btn");
+    //observer.observe(btn);
+    //observer.observe(bottomBtn);
+
+    /**
+     * 检测设备.
+     * */
+    const detectDeviceType = () =>
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+        ) ? "Mobile" : "Desktop";
+    //console.log(detectDeviceType());
+
+    /**
+     * 将元素的style.visibility设置为hidden，隐藏元素的可见性，但元素的空间仍然会被占用。如果设置元素的style.display为none，会将元素从渲染流中删除.
+     * */
+    const hideElement = (el, removeFromFlow = false) => {
+        removeFromFlow ? (el.style.display = 'none')
+            : (el.style.visibility = 'hidden')
+    }
+
+    /**
+     * URL中获取参数.
+     * */
+    const getParamByUrl = (key) => {
+        const url = new URL(location.href)
+        return url.searchParams.get(key)
+    }
+
+    /**
+     * 深拷贝对象.
+     * */
+    const deepCopy = obj => JSON.parse(JSON.stringify(obj))
+
+    // 除了利用 JSON 的 API，还有更新的深拷贝对象的 structuredClone API，但并不是在所有的浏览器中都支持.
+    //structuredClone(obj)
+
+    /**
+     * 等待函数.
+     * */
+    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+    const asyncFn = async () => {
+        await wait(1000)
+        console.log('等待异步函数执行结束')
+    }
+
+    //asyncFn()
 </script>
