@@ -312,11 +312,10 @@ namespace HelloWorldTest
         [TestCategory("数组")]
         public void JumpTest() 
         {
-            int result = 0;
             int[] nums = new int[] { 2, 3, 1, 1, 4 };
 
             //ArrayController arrayController = new ArrayController();
-            result = this.controller.Jump(nums);
+            int result = controller.Jump(nums);
 
             Console.WriteLine(result);
         }
@@ -329,10 +328,9 @@ namespace HelloWorldTest
         [TestCategory("数组")]
         public void PermuteTest() 
         {
-            IList<IList<int>> result = new List<IList<int>>();
             int[] nums = new int[] { 1, 2, 3 };
 
-            result = this.controller.Permute(nums);
+            IList<IList<int>> result = controller.Permute(nums);
 
             Console.WriteLine(JsonConvert.SerializeObject(result));
         }
@@ -346,10 +344,9 @@ namespace HelloWorldTest
         [TestCategory("数组")]
         public void AA() 
         {
-            IList<IList<int>> result = new List<IList<int>>();
             int[] nums = new int[] { 1, 1, 2 };
 
-            result = this.controller.PermuteUnique(nums);
+            IList<IList<int>> result = this.controller.PermuteUnique(nums);
 
             Console.WriteLine(JsonConvert.SerializeObject(result));
         }
@@ -383,11 +380,9 @@ namespace HelloWorldTest
         [TestCategory("数组")]
         public void SolveNQueensTest() 
         {
-            IList<IList<String>> result = new List<IList<String>>();
-
             int n = 4;
 
-            result = this.controller.SolveNQueens(n);
+            IList<IList<string>> result = controller.SolveNQueens(n);
 
             Console.WriteLine(JsonConvert.SerializeObject(result));
         }

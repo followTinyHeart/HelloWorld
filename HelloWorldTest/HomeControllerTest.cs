@@ -11,7 +11,6 @@ namespace HelloWorldTest
     {
         private readonly ILogger<HomeController> _logger;
 
-
         [TestMethod]
         [TestCategory("常用")]
         public void TestMethod1()
@@ -23,8 +22,14 @@ namespace HelloWorldTest
             Console.WriteLine(result.Value);
         }
 
-        public void AddTest() { }
+        [TestMethod]
+        [TestCategory("常用")]
+        public void TestMethod2()
+        {
 
+        }
+
+        public void AddTest() { }
 
         public void FromMac() { }
 
@@ -37,14 +42,20 @@ namespace HelloWorldTest
             test2 test2 = new test2();
             test2.Name = "";
             test2.Name2 = "";
-
-
         }
+    }
+
+    public class UserInfo
+    {
+        public String Guid { get; set; }
+        public String Name { get; set; }
+        public int Age { get; set; }
     }
 
     public class test1
     {
         public String Name { get; set; }
+
         public String Name2 { get; set; }
     }
 
@@ -52,6 +63,7 @@ namespace HelloWorldTest
     public class test2 : test1
     {
         public String Name3 { get; set; }
+
         public String Name4 { get; set; }
     }
 
@@ -66,6 +78,7 @@ namespace HelloWorldTest
     {
         String name { get; set; }
     }
+
     public interface iTest2 
     {
         String NameT { get; set; }
@@ -74,8 +87,7 @@ namespace HelloWorldTest
     public class iTest1 : iTest,iTest2
     {
         public string name { get; set; }
+
         public string NameT { get; set; }
     }
-
-
 }
